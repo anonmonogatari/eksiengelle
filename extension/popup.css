@@ -6,29 +6,56 @@ body{
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
-h2{
-    padding: 0px;
-    margin: 15px 0px 0px 0px;
+#wrapper{
+    margin: auto;
+    width: 100%;
 }
-.btn {
-    display: flex;
+
+h2{
+    color: #598f2d;
+    padding: 0px;
+    margin: 15px 0px 10px 0px;
+}
+#button1 {
     border: none;
+    display: inline;
+    margin: auto;
     color: white;
     padding: 14px 28px;
     cursor: pointer;
-    background-color: #f44336;
+    background-color: #598f2d;
+    text-align: center;
+}
+#button2 {
+    margin: auto;
+    display: none;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    background-color: #598f2d;
     text-align: center;
 }
 
-.btn:hover {background-color: #da190b;}
 
 .yazi {
     margin: 2px 2px 2px 10px;
-    color: darkred;
+    color: 598f2d;
 }
+#adres {
+    display: block;
+    margin: 15px auto;
+    width: 160px;
+    border: 0;
+    border-bottom: 2px solid #2b3621;
+    outline: 0;
+    color: #274b0b;
+    font-size: 18px;
+}
+
 #sayi {
 
 }
+
 #blocktext {
 
 }
@@ -37,6 +64,4 @@ h2{
     padding: 0 0px;
     background-color: white;
     max-height: 0;
-    overflow: hidden;
 }
-#81c14b

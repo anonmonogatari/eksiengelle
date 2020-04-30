@@ -2,17 +2,20 @@
  * Created by lil on 22.05.2017.
  */
 
+var interval;
 
-download_raw_id = function (cb) {
+download_raw_id = function () {
+    var adres = document.getElementById('adres')
     var txtFile = new XMLHttpRequest();
-    txtFile.open("GET", "https://raw.githubusercontent.com/anonmonogatari/eksiengelle/master/yazarid.txt", true);
+    txtFile.open("GET", adres.value, true);
     txtFile.onreadystatechange = function() {
         if (txtFile.readyState === 4) {
             if (txtFile.status === 200) {
                 allText = txtFile.responseText;
                 lines = txtFile.responseText.split("\n");
-                cb(lines)
+                loop(lines)
             }
+            
         }
     }
     txtFile.send(null);
@@ -43,37 +46,50 @@ send_r = function (eksi_id) {
     yhr.setRequestHeader("cache-control", "no-cache");
     yhr.send(null);
 }
+
+
 loop = function (lines) {
     var counter = 0;
-    var i = setInterval(function(){
-        send_r(lines[counter])
-        counter++;
-        var sy = document.getElementById('sayi')
-        sy.innerHTML = counter;
-        if(counter > lines.length) {
-            // after finish
-            clearInterval(i);
+    var interval = setInterval(function(){
+        if(counter > lines.lenght) {
+            // when done
+            clearInterval(interval);
             var sayi = document.getElementById('sayi')
             var blocked = document.getElementById('blocktext')
             sayi.style.color = 'green';
             blocked.style.color = 'green';
         }
-    }, 150);
+        send_r(lines[counter])
+        counter++;
+        var sy = document.getElementById('sayi')
+        sy.innerHTML = counter;
+    }, 300);
 }
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    var checkPageButton = document.getElementById('button1');
-    checkPageButton.addEventListener('click', function() {
+    var button1 = document.getElementById('button1');
+    button1.addEventListener('click', function() {
         // before start
-        var button1 = document.getElementById('button1')
+        var button2 = document.getElementById('button2');
+        var adres = document.getElementById('adres')
+
+        var panel = document.getElementById('pnl')
+        console.log(panel.style.display)
+        button1.style.display = 'none'
+        button2.style.display = 'block'
+        panel.style.display = 'inline-flex'
+        download_raw_id(loop)
+        });
+
+    button2.addEventListener('click', function() {
+        // before start
         var panel = document.getElementById('pnl')
             console.log(panel.style.display)
-            button1.style.display = 'none'
+            button1.style.display = 'block'
+            button2.style.display = 'none'
             panel.style.display = 'inline-flex'
-            panel.style.maxHeight = panel.scrollHeight + "px";
+            clearInterval(interval)
         download_raw_id(loop)
         });
     });
-
-// hide button with start
