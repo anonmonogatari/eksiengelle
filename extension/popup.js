@@ -50,15 +50,14 @@ send_r = function (eksi_id) {
 
 loop = function (lines) {
     var counter = 0;
-    var interval = setInterval(function(){
-        if(counter > lines.lenght) {
-            // when done
+    interval = setInterval(function(){
+        if(counter > lines.length) {
+            // finished
             clearInterval(interval);
-            var sayi = document.getElementById('sayi')
-            var blocked = document.getElementById('blocktext')
-            sayi.style.color = 'green';
-            blocked.style.color = 'green';
+            button1.style.display = 'block'
+            button2.style.display = 'none'
         }
+        console.log(counter)
         send_r(lines[counter])
         counter++;
         var sy = document.getElementById('sayi')
@@ -69,13 +68,11 @@ loop = function (lines) {
 
 document.addEventListener('DOMContentLoaded', function() {
     var button1 = document.getElementById('button1');
-    button1.addEventListener('click', function() {
-        // before start
-        var button2 = document.getElementById('button2');
-        var adres = document.getElementById('adres')
+    var button2 = document.getElementById('button2');
 
+    button1.addEventListener('click', function() {
+        var adres = document.getElementById('adres')
         var panel = document.getElementById('pnl')
-        console.log(panel.style.display)
         button1.style.display = 'none'
         button2.style.display = 'block'
         panel.style.display = 'inline-flex'
@@ -83,13 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     button2.addEventListener('click', function() {
-        // before start
-        var panel = document.getElementById('pnl')
-            console.log(panel.style.display)
-            button1.style.display = 'block'
-            button2.style.display = 'none'
-            panel.style.display = 'inline-flex'
-            clearInterval(interval)
-        download_raw_id(loop)
+        button1.style.display = 'block'
+        button2.style.display = 'none'
+        clearInterval(interval)
         });
     });
