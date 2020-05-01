@@ -10,11 +10,6 @@
     "48": "anticomar48.png",
     "128": "anticomar128.png" },
   "permissions": [
-    "https://raw.githubusercontent.com/",
-    "https://eksisozluk.com/"
-    "https://ghostbin.co/"
-    "https://pastebin.com/"
-    "https://hastebin.com/"
-    "https://privatebin.net/"
+    "<all_urls>"
   ]
 }
