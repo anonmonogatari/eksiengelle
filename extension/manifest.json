@@ -12,9 +12,9 @@
   "permissions": [
     "https://raw.githubusercontent.com/",
     "https://eksisozluk.com/"
-    "https://ghostbin.co"
-    "https://pastebin.com"
-    "https://hastebin.com"
-    "https://privatebin.net"
+    "https://ghostbin.co/"
+    "https://pastebin.com/"
+    "https://hastebin.com/"
+    "https://privatebin.net/"
   ]
 }
